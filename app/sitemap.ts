@@ -3,7 +3,7 @@ import { PAKISTAN_CITIES } from './citiesData';
 const baseUrl = 'https://smart-solar-load-calculator.pages.dev';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  baseUrl = 'https://www.voltpulse.com';
+
 
   // 1. Static Core Pages
   const staticPages = [
