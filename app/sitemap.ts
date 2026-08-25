@@ -1,3 +1,5 @@
+
+export const dynamic = "force-static";
 import { MetadataRoute } from 'next';
 import { PAKISTAN_CITIES } from './citiesData';
 const baseUrl = 'https://smart-solar-load-calculator.pages.dev';
