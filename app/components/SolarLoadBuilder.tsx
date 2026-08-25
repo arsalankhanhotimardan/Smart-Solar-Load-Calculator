@@ -7,6 +7,13 @@ import {
 } from "lucide-react";
 import AdBanner from "./AdBanner";
 
+declare global {
+  interface Window {
+    SpeechRecognition: any;
+    webkitSpeechRecognition: any;
+  }
+}
+
 export default function SolarLoadBuilder() {
   const [activeBranch, setActiveBranch] = useState<"domestic" | "commercial">("domestic");
   const [commercialSubSector, setCommercialSubSector] = useState<"education" | "medical" | "industry" | "office" | null>(null);
