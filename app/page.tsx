@@ -1,7 +1,7 @@
 import SolarLoadBuilder from "./components/SolarLoadBuilder";
 import { Metadata } from 'next';
 // 1. Import your database actions
-import { getDomesticAppliances, getCommercialAppliances, getSolarPanelCatalog } from "../actions"; // Adjust this path if actions.ts is in a different folder
+import { getDomesticAppliances, getCommercialAppliances, getSolarPanelCatalog } from "./actions"; // Adjust this path if actions.ts is in a different folder
 
 // 2. Next.js Dynamic Metadata for perfect SEO
 export const metadata: Metadata = {
