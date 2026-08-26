@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { 
   Zap, Plus, Minus, Sun, Clock, RotateCcw, Cpu, BatteryCharging, ArrowRight, SlidersHorizontal, Maximize2, CheckCircle2, Factory, Settings, Home, Building2, GraduationCap, Stethoscope, Briefcase, ChevronLeft, Check, Mic
 } from "lucide-react";
@@ -45,6 +45,13 @@ export default function SolarLoadBuilder({
 
   const [isListening, setIsListening] = useState(false);
   const [voiceFeedback, setVoiceFeedback] = useState<string | null>(null);
+
+  // --- UX ENHANCEMENT: AUTO-SCROLL TO TOP ---
+  useEffect(() => {
+    // Whenever the user changes a step or switches between home/commercial,
+    // smoothly scroll the window back to the top so they see the new content immediately.
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [activeStep, activeBranch]);
 
   const getVisibleCatalog = () => {
     if (activeBranch === "domestic") return domesticCatalog;
