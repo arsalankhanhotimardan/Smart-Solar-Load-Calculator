@@ -538,8 +538,20 @@ export default function SolarLoadBuilder({
           {/* AD CONTAINER 2: Inside Final Recommendation view (High intent monetization) */}
           <AdBanner dataAdSlot="2222222222" dataAdFormat="auto" />
           
-          <div className="flex justify-center mt-6">
-              <button onClick={() => setActiveStep("preferences")} className="text-slate-400 hover:text-white text-xs underline transition">Back to System Settings</button>
+          <div className="flex flex-col-reverse sm:flex-row justify-center items-center gap-4 sm:gap-8 mt-8 pt-6 border-t border-slate-800/80">
+              <button 
+                onClick={() => setActiveStep("preferences")} 
+                className="text-slate-400 hover:text-white text-sm font-medium transition-colors flex items-center gap-1.5"
+              >
+                <ChevronLeft className="w-4 h-4" /> Edit Settings
+              </button>
+              
+              <button 
+                onClick={resetAll} 
+                className="w-full sm:w-auto bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white font-bold py-3 px-6 rounded-xl shadow-lg transition-all text-sm flex items-center justify-center gap-2"
+              >
+                 <RotateCcw className="w-4 h-4 text-sky-400" /> Calculate Another System
+              </button>
           </div>
         </section>
       )}
