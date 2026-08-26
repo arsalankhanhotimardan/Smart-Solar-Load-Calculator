@@ -82,6 +82,9 @@ export default function RootLayout({
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
           crossOrigin="anonymous"
         ></script>
+
+<meta name="google-site-verification" content="2mF-waX3wchhW6xp45aynvq3D-jfBfxSpZtQfDmXPqM" />
+
       </head>
       {/* 2. Added dark theme background and text colors to the body */}
       <body className="min-h-full flex flex-col bg-slate-950 text-slate-200">
