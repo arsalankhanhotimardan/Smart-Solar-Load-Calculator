@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
+// 1. Import your new UI components
+import Navbar from "../components/Navbar"; 
+import Footer from "../components/Footer";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -35,7 +39,21 @@ export default function RootLayout({
           crossOrigin="anonymous"
         ></script>
       </head>
-      <body className="min-h-full flex flex-col">{children}</body>
+      {/* 2. Added dark theme background and text colors to the body */}
+      <body className="min-h-full flex flex-col bg-slate-950 text-slate-200">
+        
+        {/* 3. Global Navbar (Contains your Logo) */}
+        <Navbar />
+        
+        {/* 4. Main Content Wrapper (flex-1 pushes the footer to the bottom) */}
+        <div className="flex-1">
+          {children}
+        </div>
+        
+        {/* 5. Global Footer (Contains your AdSense Legal Links) */}
+        <Footer />
+        
+      </body>
     </html>
   );
 }
