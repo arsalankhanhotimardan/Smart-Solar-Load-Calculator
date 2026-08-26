@@ -1,60 +1,46 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import { useEffect } from "react";
 
 interface AdBannerProps {
   dataAdSlot: string;
-  dataAdFormat?: string;
-  dataFullWidthResponsive?: boolean;
-  className?: string;
+  dataAdFormat: "auto" | "horizontal" | "rectangle";
 }
 
-export default function AdBanner({
-  dataAdSlot,
-  dataAdFormat = "auto",
-  dataFullWidthResponsive = true,
-  className = "",
-}: AdBannerProps) {
-  const adInsRef = useRef<HTMLModElement>(null);
-  const isLoadedRef = useRef(false);
-
+export default function AdBanner({ dataAdSlot, dataAdFormat }: AdBannerProps) {
   useEffect(() => {
-    // Prevent double-pushing ads on re-renders / strict mode
-    if (isLoadedRef.current) return;
-
     try {
-      if (window && (window as any).adsbygoogle && adInsRef.current) {
-        // Check if the ins element is already filled
-        if (adInsRef.current.getAttribute("data-adsbygoogle-status") === "done") {
-          return;
-        }
-        
-        ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({});
-        isLoadedRef.current = true;
-      }
-    } catch (error) {
-      console.error("AdSense error:", error);
+      // Initialize the Google AdSense script only once the component mounts
+      ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({});
+    } catch (err) {
+      console.error("AdSense error:", err);
     }
   }, []);
 
   return (
-    <div 
-      className={`w-full overflow-hidden bg-slate-900/40 border border-dashed border-slate-800 rounded-2xl flex flex-col items-center justify-center text-center p-3 my-6 min-h-[100px] ${className}`}
-    >
-      <span className="text-[10px] uppercase tracking-widest text-slate-500 font-semibold mb-2">
-        Advertisement
-      </span>
+    <div className="w-full flex justify-center items-center relative overflow-hidden my-6 rounded-2xl bg-slate-900/30 border border-slate-800/50 shadow-inner">
       
-      {/* Google AdSense Ins Tag */}
-      <div className="w-full flex justify-center">
+      {/* Professional subtle placeholder text behind the ad */}
+      <div className="absolute inset-0 flex items-center justify-center -z-10">
+        <span className="text-[10px] font-bold text-slate-700 tracking-[0.2em] uppercase">
+          Advertisement
+        </span>
+      </div>
+
+      {/* The AdSense Unit */}
+      <div className="w-full overflow-hidden flex justify-center items-center">
         <ins
-          ref={adInsRef}
-          className="adsbygoogle"
-          style={{ display: "block", width: "100%" }}
-          data-ad-client={process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID || "ca-pub-XXXXXXXXXXXXXXXX"}
+          className="adsbygoogle w-full"
+          style={{ 
+            display: "block",
+            // Strictly constrain the height on mobile so it doesn't take over the screen
+            maxHeight: dataAdFormat === "horizontal" ? "100px" : "280px" 
+          }}
+          // NOTE: Remember to replace this with your actual client ID when approved!
+          data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" 
           data-ad-slot={dataAdSlot}
-          data-ad-format={dataAdFormat}
-          data-full-width-responsive={dataFullWidthResponsive ? "true" : "false"}
+          data-ad-format={dataAdFormat === "auto" ? "horizontal" : dataAdFormat} 
+          data-full-width-responsive="true"
         />
       </div>
     </div>

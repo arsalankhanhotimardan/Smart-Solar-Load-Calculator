@@ -21,24 +21,41 @@ export default async function Home() {
   const commercialCatalog = await getCommercialAppliances().catch(() => []);
   const panelCatalog = await getSolarPanelCatalog().catch(() => []);
 
-  // JSON-LD Schema: Tells Google this is an official Software Application
+  
+// JSON-LD Schema: Tells Google this is an official Software Application
   const schemaMarkup = {
     "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
+    "@type": "WebApplication",
     "name": "Smart Solar Load Calculator",
-    "operatingSystem": "Web",
-    "applicationCategory": "BusinessApplication",
-    "description": "An advanced engineering calculator for domestic and commercial solar load estimation in Pakistan.",
+    "url": "https://www.voltpulse.com",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript",
+    "description": "An advanced engineering calculator for domestic and commercial solar load estimation.",
     "offers": {
       "@type": "Offer",
-      "price": "0",
+      "price": "0.00",
       "priceCurrency": "PKR"
     },
     "creator": {
-      "@type": "Organization",
-      "name": "VoltPulse Green Energy"
-    }
+      "@type": "Person",
+      "name": "Engr. Arsalan Khan",
+      "jobTitle": "Software and Web Developer",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Mardan",
+        "addressRegion": "Khyber Pakhtunkhwa",
+        "addressCountry": "PK"
+      }
+    },
+    "featureList": [
+      "Dynamic load profile generation",
+      "Hybrid and On-Grid system sizing",
+      "Commercial and domestic facility mapping",
+      "Voice command NLP integration"
+    ]
   };
+
 
   return (
     <main className="min-h-screen bg-slate-950 p-4 sm:p-8">

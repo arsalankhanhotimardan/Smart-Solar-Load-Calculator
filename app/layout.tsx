@@ -17,8 +17,52 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Smart Solar Load Calculator | Pakistan & International",
-  description: "Accurately calculate your home or commercial power load and find exact solar system requirements.",
+  metadataBase: new URL('https://www.voltpulse.com'),
+  title: {
+    default: "Smart Solar Load Calculator | Find Exact System Size",
+    template: "%s | VoltPulse Green Energy"
+  },
+  description: "Accurately calculate your home or commercial power load. Engineer the exact solar system size, inverter, and battery requirements in Pakistan and worldwide.",
+  keywords: [
+    "solar load calculator", "solar panel calculator", "how many solar panels do i need", 
+    "hybrid solar system calculator", "solar calculator pakistan", "commercial solar calculator", 
+    "off grid solar calculator", "mppt inverter size calculator"
+  ],
+  authors: [{ name: "Engr. Arsalan Khan", url: "https://www.voltpulse.com/about" }],
+  creator: "Engr. Arsalan Khan",
+  publisher: "VoltPulse Green Energy",
+  openGraph: {
+    type: "website",
+    locale: "en_PK",
+    url: "https://www.voltpulse.com",
+    siteName: "VoltPulse Solar Calculator",
+    title: "Smart Solar Load Calculator",
+    description: "Engineer your exact solar system size in seconds. Advanced load calculation for homes, hospitals, and industries.",
+    images: [
+      {
+        url: "/og-image.jpg", // You can upload an image named og-image.jpg to your public folder later
+        width: 1200,
+        height: 630,
+        alt: "Smart Solar Load Calculator Interface",
+      }
+    ]
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Smart Solar Load Calculator",
+    description: "Engineer your exact solar system size in seconds.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
 
 export default function RootLayout({
