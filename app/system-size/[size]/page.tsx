@@ -1,11 +1,14 @@
 import { Metadata } from 'next';
 import AdBanner from '@/app/components/AdBanner';
-// IMPORT YOUR CALCULATOR (Adjust the path if your components folder is elsewhere)
 import SolarLoadBuilder from '@/app/components/SolarLoadBuilder'; 
+
+// IMPORT YOUR DATABASE ACTIONS
+// Using relative path to go up two directories to reach the app folder
+import { getDomesticAppliances, getCommercialAppliances, getSolarPanelCatalog } from '../../actions';
 
 export const dynamic = "force-static";
 
-// 1. GENERATE URLS: Tell Next.js which keywords/pages to build automatically
+// 1. GENERATE URLS
 export function generateStaticParams() {
   return [
     { size: '3kw' },
@@ -17,12 +20,11 @@ export function generateStaticParams() {
   ];
 }
 
-// Define the new async props structure required by Next.js 15+
 type Props = {
   params: Promise<{ size: string }>;
 };
 
-// 2. DYNAMIC SEO: Await the params before generating metadata
+// 2. DYNAMIC SEO
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const resolvedParams = await params;
   const formattedSize = resolvedParams.size.replace('-', '.').toUpperCase();
@@ -36,10 +38,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-// 3. PAGE CONTENT: Make the component async and await the params
+// 3. PAGE CONTENT
 export default async function SystemSizePage({ params }: Props) {
   const resolvedParams = await params;
   const formattedSize = resolvedParams.size.replace('-', '.').toUpperCase();
+  
+  // FETCH DATA FROM YOUR NEON DATABASE
+  const domesticCatalog = await getDomesticAppliances().catch(() => []);
+  const commercialCatalog = await getCommercialAppliances().catch(() => []);
+  const panelCatalog = await getSolarPanelCatalog().catch(() => []);
   
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-8 py-10">
@@ -54,13 +61,13 @@ export default async function SystemSizePage({ params }: Props) {
         </p>
       </div>
 
-      {/* 
-        THE CALCULATOR
-      */}
+      {/* RENDER THE LIVE CALCULATOR */}
       <div className="mb-16">
-         <div className="bg-slate-900/50 border border-slate-800 p-12 rounded-2xl text-center text-slate-400 text-sm border-dashed">
-            [ Render your SolarLoadBuilder Component Here ]
-         </div>
+         <SolarLoadBuilder 
+           initialDomestic={domesticCatalog}
+           initialCommercial={commercialCatalog}
+           initialPanels={panelCatalog}
+         />
       </div>
 
       {/* AD CONTAINER */}
