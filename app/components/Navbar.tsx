@@ -8,9 +8,18 @@ export default function Navbar() {
         <Link href="/" className="hover:opacity-90 transition-opacity">
           <Logo />
         </Link>
+        
+        {/* Desktop Navigation Links */}
+        <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+          <Link href="/" className="hover:text-sky-400 transition-colors">Home</Link>
+          <Link href="/about" className="hover:text-sky-400 transition-colors">About Us</Link>
+          <Link href="/privacy" className="hover:text-sky-400 transition-colors">Privacy</Link>
+          <Link href="/terms" className="hover:text-sky-400 transition-colors">Terms</Link>
+        </div>
+
         <div className="flex items-center gap-4">
-           <Link href="/contact" className="text-xs font-bold text-white bg-sky-600 hover:bg-sky-500 px-4 py-2 rounded-lg transition-all shadow-lg shadow-sky-900/20">
-             Get Support
+           <Link href="/contact" className="text-xs font-bold text-white bg-sky-600 hover:bg-sky-500 px-5 py-2.5 rounded-lg transition-all shadow-lg shadow-sky-900/20">
+             Contact Us
            </Link>
         </div>
       </div>
