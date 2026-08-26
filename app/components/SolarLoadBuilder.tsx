@@ -1,7 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { getDomesticAppliances, getCommercialAppliances, getSolarPanelCatalog } from "../actions"; 
+import React, { useState } from "react";
 import { 
   Zap, Plus, Minus, Sun, Clock, RotateCcw, Cpu, BatteryCharging, ArrowRight, SlidersHorizontal, Maximize2, CheckCircle2, Factory, Settings, Home, Building2, GraduationCap, Stethoscope, Briefcase, ChevronLeft, Check, Mic
 } from "lucide-react";
@@ -14,41 +13,38 @@ declare global {
   }
 }
 
-export default function SolarLoadBuilder() {
+// 1. Define the props to receive data from page.tsx
+interface SolarLoadBuilderProps {
+  initialDomestic: any[];
+  initialCommercial: any[];
+  initialPanels: any[];
+}
+
+export default function SolarLoadBuilder({ 
+  initialDomestic, 
+  initialCommercial, 
+  initialPanels 
+}: SolarLoadBuilderProps) {
+  
   const [activeBranch, setActiveBranch] = useState<"domestic" | "commercial">("domestic");
   const [commercialSubSector, setCommercialSubSector] = useState<"education" | "medical" | "industry" | "office" | null>(null);
   
   const [activeStep, setActiveStep] = useState<"builder" | "preferences" | "recommendation">("builder");
   
-  const [domesticCatalog, setDomesticCatalog] = useState<any[]>([]);
-  const [commercialCatalog, setCommercialCatalog] = useState<any[]>([]);
-  const [panelCatalog, setPanelCatalog] = useState<any[]>([]);
+  // 2. Initialize catalogs directly from the props passed down
+  const [domesticCatalog, setDomesticCatalog] = useState<any[]>(initialDomestic);
+  const [commercialCatalog, setCommercialCatalog] = useState<any[]>(initialCommercial);
+  const [panelCatalog, setPanelCatalog] = useState<any[]>(initialPanels);
   
   const [systemPreference, setSystemPreference] = useState<"on-grid" | "hybrid">("hybrid");
-  const [selectedPanelId, setSelectedPanelId] = useState<number>(0);
+  // 3. Set the default panel safely based on the passed data
+  const [selectedPanelId, setSelectedPanelId] = useState<number>(initialPanels.length > 0 ? initialPanels[0].id : 0);
   
   const [loadProfile, setLoadProfile] = useState<Record<number, { quantity: number, hoursPerDay: number }>>({});
   const [dropdownSelections, setDropdownSelections] = useState<Record<string, number>>({});
 
   const [isListening, setIsListening] = useState(false);
   const [voiceFeedback, setVoiceFeedback] = useState<string | null>(null);
-
-  useEffect(() => {
-    const loadData = async () => {
-      const domData = await getDomesticAppliances().catch(() => []);
-      if (domData) setDomesticCatalog(domData);
-
-      const comData = await getCommercialAppliances().catch(() => []);
-      if (comData) setCommercialCatalog(comData);
-
-      const panels = await getSolarPanelCatalog().catch(() => []);
-      if (panels && panels.length > 0) {
-        setPanelCatalog(panels);
-        setSelectedPanelId(panels[0].id);
-      }
-    };
-    loadData();
-  }, []);
 
   const getVisibleCatalog = () => {
     if (activeBranch === "domestic") return domesticCatalog;

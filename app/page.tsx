@@ -1,7 +1,9 @@
 import SolarLoadBuilder from "./components/SolarLoadBuilder";
 import { Metadata } from 'next';
+// 1. Import your database actions
+import { getDomesticAppliances, getCommercialAppliances, getSolarPanelCatalog } from "../actions"; // Adjust this path if actions.ts is in a different folder
 
-// 1. Next.js Dynamic Metadata for perfect SEO
+// 2. Next.js Dynamic Metadata for perfect SEO
 export const metadata: Metadata = {
   title: 'Smart Solar Load Calculator Pakistan | Find Exact System Size',
   description: 'Accurately calculate your home or commercial power load. Find out exactly how many solar panels, inverters, and batteries you need in Pakistan.',
@@ -11,8 +13,15 @@ export const metadata: Metadata = {
   }
 };
 
-export default function Home() {
-  // 2. JSON-LD Schema: Tells Google this is an official Software Application
+// 3. Add "async" to the Home component so it can fetch data securely during the build
+export default async function Home() {
+  
+  // 4. Fetch the data directly from Neon database
+  const domesticCatalog = await getDomesticAppliances().catch(() => []);
+  const commercialCatalog = await getCommercialAppliances().catch(() => []);
+  const panelCatalog = await getSolarPanelCatalog().catch(() => []);
+
+  // JSON-LD Schema: Tells Google this is an official Software Application
   const schemaMarkup = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
@@ -46,7 +55,12 @@ export default function Home() {
         </p>
       </div>
       
-      <SolarLoadBuilder />
+      {/* 5. Pass the fetched data directly into your calculator */}
+      <SolarLoadBuilder 
+        initialDomestic={domesticCatalog}
+        initialCommercial={commercialCatalog}
+        initialPanels={panelCatalog}
+      />
       
       {/* Hidden SEO Content block (Google bots read this, users scroll past it) */}
       <article className="max-w-4xl mx-auto mt-16 prose prose-invert prose-sm text-slate-500">
