@@ -7,8 +7,9 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/api/'],
+      disallow: ['/api/'], 
     },
-    sitemap: 'https://www.voltpulse.com/sitemap.xml',
+    // Updated to your actual Cloudflare Pages domain
+    sitemap: 'https://smart-solar-load-calculator.pages.dev/sitemap.xml',
   };
 }

@@ -17,7 +17,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.voltpulse.com'),
+  // 1. UPDATED: Changed to your actual live Pages domain
+  metadataBase: new URL('https://smart-solar-load-calculator.pages.dev'),
   title: {
     default: "Smart Solar Load Calculator | Find Exact System Size",
     template: "%s | VoltPulse Green Energy"
@@ -28,19 +29,21 @@ export const metadata: Metadata = {
     "hybrid solar system calculator", "solar calculator pakistan", "commercial solar calculator", 
     "off grid solar calculator", "mppt inverter size calculator"
   ],
-  authors: [{ name: "Engr. Arsalan Khan", url: "https://www.voltpulse.com/about" }],
+  // 2. UPDATED: Changed the author URL
+  authors: [{ name: "Engr. Arsalan Khan", url: "https://smart-solar-load-calculator.pages.dev/about" }],
   creator: "Engr. Arsalan Khan",
   publisher: "VoltPulse Green Energy",
   openGraph: {
     type: "website",
     locale: "en_PK",
-    url: "https://www.voltpulse.com",
+    // 3. UPDATED: Changed OpenGraph URL
+    url: "https://smart-solar-load-calculator.pages.dev",
     siteName: "VoltPulse Solar Calculator",
     title: "Smart Solar Load Calculator",
     description: "Engineer your exact solar system size in seconds. Advanced load calculation for homes, hospitals, and industries.",
     images: [
       {
-        url: "/og-image.jpg", // You can upload an image named og-image.jpg to your public folder later
+        url: "/og-image.jpg", 
         width: 1200,
         height: 630,
         alt: "Smart Solar Load Calculator Interface",
@@ -63,6 +66,10 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  // 4. ADDED: Official Next.js method for Google Site Verification
+  verification: {
+    google: '2mF-waX3wchhW6xp45aynvq3D-jfBfxSpZtQfDmXPqM',
+  },
 };
 
 export default function RootLayout({
@@ -82,22 +89,19 @@ export default function RootLayout({
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
           crossOrigin="anonymous"
         ></script>
-
-<meta name="google-site-verification" content="2mF-waX3wchhW6xp45aynvq3D-jfBfxSpZtQfDmXPqM" />
-
       </head>
-      {/* 2. Added dark theme background and text colors to the body */}
+      {/* Added dark theme background and text colors to the body */}
       <body className="min-h-full flex flex-col bg-slate-950 text-slate-200">
         
-        {/* 3. Global Navbar (Contains your Logo) */}
+        {/* Global Navbar (Contains your Logo) */}
         <Navbar />
         
-        {/* 4. Main Content Wrapper (flex-1 pushes the footer to the bottom) */}
+        {/* Main Content Wrapper (flex-1 pushes the footer to the bottom) */}
         <div className="flex-1">
           {children}
         </div>
         
-        {/* 5. Global Footer (Contains your AdSense Legal Links) */}
+        {/* Global Footer (Contains your AdSense Legal Links) */}
         <Footer />
         
       </body>
