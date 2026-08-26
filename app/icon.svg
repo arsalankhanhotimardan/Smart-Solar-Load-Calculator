@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <!-- Dark Slate Rounded Background -->
+  <rect width="24" height="24" rx="6" fill="#020617"/>
+  <!-- Sky Blue Sun/Core -->
+  <circle cx="12" cy="12" r="7" fill="none" stroke="#38bdf8" stroke-width="2.5"/>
+  <!-- Emerald Green Electrical Pulse -->
+  <path d="M13 7.5l-4.5 5.5h4.5l-1 5" stroke="#34d399" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
