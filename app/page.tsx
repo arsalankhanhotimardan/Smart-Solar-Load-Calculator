@@ -9,7 +9,8 @@ export const metadata: Metadata = {
   description: 'Accurately calculate your home or commercial power load. Find out exactly how many solar panels, inverters, and batteries you need in Pakistan.',
   keywords: ['solar load calculator pakistan', 'how many solar panels for ac', 'commercial solar calculator', '5kw solar system load', 'hybrid solar calculator'],
   alternates: {
-    canonical: 'https://www.voltpulse.com',
+    // FIXED: Changed from voltpulse.com to your actual pages.dev domain
+    canonical: 'https://smart-solar-load-calculator.pages.dev',
   }
 };
 
@@ -26,7 +27,8 @@ export default async function Home() {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "Smart Solar Load Calculator",
-    "url": "https://www.voltpulse.com",
+    // FIXED: Changed from voltpulse.com to your actual pages.dev domain
+    "url": "https://smart-solar-load-calculator.pages.dev",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "All",
     "browserRequirements": "Requires JavaScript",
