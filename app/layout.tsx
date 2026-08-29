@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   // 1. UPDATED: Changed to your actual live Pages domain
-  metadataBase: new URL('https://smart-solar-load-calculator.pages.dev'),
+  metadataBase: new URL('https://solarcalculator.greenengineeringtools.com'),
   title: {
     default: "Smart Solar Load Calculator | Find Exact System Size",
     template: "%s | VoltPulse Green Energy"
@@ -30,14 +30,14 @@ export const metadata: Metadata = {
     "off grid solar calculator", "mppt inverter size calculator"
   ],
   // 2. UPDATED: Changed the author URL
-  authors: [{ name: "Engr. Arsalan Khan", url: "https://smart-solar-load-calculator.pages.dev/about" }],
+  authors: [{ name: "Engr. Arsalan Khan", url: "https://solarcalculator.greenengineeringtools.com/about" }],
   creator: "Engr. Arsalan Khan",
   publisher: "VoltPulse Green Energy",
   openGraph: {
     type: "website",
     locale: "en_PK",
     // 3. UPDATED: Changed OpenGraph URL
-    url: "https://smart-solar-load-calculator.pages.dev",
+    url: "https://solarcalculator.greenengineeringtools.com",
     siteName: "VoltPulse Solar Calculator",
     title: "Smart Solar Load Calculator",
     description: "Engineer your exact solar system size in seconds. Advanced load calculation for homes, hospitals, and industries.",

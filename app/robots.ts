@@ -10,6 +10,6 @@ export default function robots(): MetadataRoute.Robots {
       disallow: ['/api/'], 
     },
     // Updated to your actual Cloudflare Pages domain
-    sitemap: 'https://smart-solar-load-calculator.pages.dev/sitemap.xml',
+    sitemap: 'https://solarcalculator.greenengineeringtools.com/sitemap.xml',
   };
 }

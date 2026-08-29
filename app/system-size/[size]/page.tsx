@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${formattedSize} Solar System Load Calculator & Appliance Guide`,
     description: `Calculate exactly what appliances a ${formattedSize} solar system can run. Get accurate load calculations, inverter sizing, and battery backup requirements.`,
     alternates: {
-      canonical: `https://smart-solar-load-calculator.pages.dev/system-size/${resolvedParams.size}`,
+      canonical: `https://solarcalculator.greenengineeringtools.com/system-size/${resolvedParams.size}`,
     }
   };
 }

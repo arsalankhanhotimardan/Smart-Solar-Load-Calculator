@@ -4,7 +4,7 @@ export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   // Updated to your actual Cloudflare Pages domain
-  const baseUrl = 'https://smart-solar-load-calculator.pages.dev'; 
+  const baseUrl = 'https://solarcalculator.greenengineeringtools.com'; 
 
   return [
     {
