@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -186,6 +186,12 @@ export default function SolarLoadBuilder({
   const [voiceFeedback, setVoiceFeedback] = useState<string | null>(null);
   const [workspaceReady, setWorkspaceReady] = useState(false);
 
+  // Keep multi-step navigation intuitive on long pages. Whenever the user
+  // changes calculator steps, bring the top of the calculator workflow back
+  // into view instead of leaving the next screen below the fold.
+  const stepTopRef = useRef<HTMLDivElement>(null);
+  const previousStepRef = useRef(activeStep);
+
   const [peakSunHours, setPeakSunHours] = useState(5);
   const [systemLossPercent, setSystemLossPercent] = useState(14);
   const [inverterEfficiencyPercent, setInverterEfficiencyPercent] = useState(96);
@@ -321,6 +327,21 @@ export default function SolarLoadBuilder({
     roofSpacingPercent,
     electricalPhase,
   ]);
+
+  useEffect(() => {
+    // Skip the initial render. Auto-scroll only after an actual step change.
+    if (previousStepRef.current === activeStep) return;
+    previousStepRef.current = activeStep;
+
+    const frame = window.requestAnimationFrame(() => {
+      stepTopRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    });
+
+    return () => window.cancelAnimationFrame(frame);
+  }, [activeStep]);
 
   const visibleCatalog = useMemo(() => {
     if (activeBranch === "domestic") return initialDomestic;
@@ -671,7 +692,10 @@ export default function SolarLoadBuilder({
         </button>
       </div>
 
-      <div className="rounded-2xl border border-slate-800 bg-slate-900 p-4 shadow-lg">
+      <div
+        ref={stepTopRef}
+        className="scroll-mt-24 rounded-2xl border border-slate-800 bg-slate-900 p-4 shadow-lg"
+      >
         <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <div className="flex items-center gap-3">
             <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-sky-500/10 text-sky-400">
