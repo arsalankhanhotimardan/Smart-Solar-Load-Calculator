@@ -1,36 +1,31 @@
-import Link from 'next/link';
-import Logo from './Logo';
+import Link from "next/link";
+import Logo from "./Logo";
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
-  
+  const year = new Date().getFullYear();
   return (
-    <footer className="bg-slate-950 border-t border-slate-800/60 pt-12 pb-8 mt-auto">
-      <div className="max-w-6xl mx-auto px-4 sm:px-8 flex flex-col md:flex-row justify-between items-center gap-8">
-        
-        <div className="flex flex-col items-center md:items-start gap-3">
-           <Logo />
-           <p className="text-slate-500 text-xs text-center md:text-left max-w-sm mt-2 leading-relaxed">
-             Engineered for precision. Calculate your exact solar requirements and transition to renewable energy with absolute confidence.
-           </p>
+    <footer className="mt-auto border-t border-slate-800/70 bg-slate-950">
+      <div className="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:px-6 md:grid-cols-[1.2fr_.8fr]">
+        <div>
+          <Logo />
+          <p className="mt-4 max-w-xl text-xs leading-6 text-slate-500">
+            Free engineering planning tools with transparent assumptions. Solar results are estimates and should be checked against site conditions, equipment datasheets, electrical codes and local utility requirements before installation.
+          </p>
         </div>
-        
-        <div className="flex flex-wrap justify-center md:justify-end gap-x-6 gap-y-3 text-sm font-medium text-slate-400">
-          <Link href="/about" className="hover:text-sky-400 transition-colors">About Us</Link>
-          <Link href="/contact" className="hover:text-sky-400 transition-colors">Contact</Link>
-          <Link href="/privacy" className="hover:text-sky-400 transition-colors">Privacy Policy</Link>
-          <Link href="/terms" className="hover:text-sky-400 transition-colors">Terms of Service</Link>
+        <div className="grid grid-cols-2 gap-x-6 gap-y-3 text-sm font-bold text-slate-400 sm:grid-cols-3 md:justify-self-end">
+          <Link href="/methodology" className="hover:text-sky-400">Methodology</Link>
+          <Link href="/disclaimer" className="hover:text-sky-400">Disclaimer</Link>
+          <Link href="/about" className="hover:text-sky-400">About</Link>
+          <Link href="/contact" className="hover:text-sky-400">Contact</Link>
+          <Link href="/privacy" className="hover:text-sky-400">Privacy</Link>
+          <Link href="/terms" className="hover:text-sky-400">Terms</Link>
         </div>
-        
       </div>
-      
-      <div className="max-w-6xl mx-auto px-4 sm:px-8 mt-10 pt-6 border-t border-slate-800/40 text-center flex flex-col sm:flex-row justify-between items-center gap-2">
-        <span className="text-xs text-slate-600">
-          © {currentYear} VoltPulse Green Energy. All rights reserved.
-        </span>
-        <span className="text-xs text-slate-600">
-          Developed by Engr. Arsalan Khan
-        </span>
+      <div className="border-t border-slate-800/50">
+        <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-5 text-center text-xs text-slate-600 sm:px-6 md:flex-row md:justify-between md:text-left">
+          <span>© {year} Green Engineering Tools. All rights reserved.</span>
+          <span>Calculator software maintained by Engr. Arsalan Khan.</span>
+        </div>
       </div>
     </footer>
   );

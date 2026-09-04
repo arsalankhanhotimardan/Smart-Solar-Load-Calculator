@@ -4,40 +4,43 @@ import { useEffect } from "react";
 
 interface AdBannerProps {
   dataAdSlot: string;
-  dataAdFormat: "auto" | "horizontal" | "rectangle";
+  dataAdFormat?: "auto" | "horizontal" | "rectangle";
 }
 
-export default function AdBanner({ dataAdSlot, dataAdFormat }: AdBannerProps) {
-  useEffect(() => {
-    try {
-      // Initialize the Google AdSense script
-      ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({});
-    } catch (err) {
-      console.error("AdSense error:", err);
-    }
-  }, []);
+/**
+ * Optional manual-ad component for future use.
+ * The current V2 calculator does not place manual ads around interactive controls.
+ * If Auto ads are enabled later, this component can remain unused.
+ */
+export default function AdBanner({
+  dataAdSlot,
+  dataAdFormat = "auto",
+}: AdBannerProps) {
+  const client = process.env.NEXT_PUBLIC_ADSENSE_CLIENT?.trim() || "";
+  const enabled = /^ca-pub-\d+$/.test(client) && /^\d+$/.test(dataAdSlot);
 
-  // 1. Force a strict Tailwind height. Horizontal = exactly 100px tall, no exceptions.
-  const heightClass = dataAdFormat === "horizontal" ? "h-[100px]" : "min-h-[250px]";
+  useEffect(() => {
+    if (!enabled) return;
+    try {
+      ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({});
+    } catch (error) {
+      console.warn("AdSense unit could not initialize.", error);
+    }
+  }, [enabled]);
+
+  if (!enabled) return null;
 
   return (
-    <div className={`w-full flex justify-center items-center relative overflow-hidden my-6 rounded-2xl bg-slate-900/40 border border-slate-800/60 shadow-inner ${heightClass}`}>
-      
-      <div className="absolute inset-0 flex items-center justify-center -z-10">
-        <span className="text-[10px] font-bold text-slate-700 tracking-[0.2em] uppercase">
-          Advertisement
-        </span>
-      </div>
-
+    <aside aria-label="Advertisement" className="my-8 min-h-[120px] w-full overflow-hidden rounded-xl border border-slate-800 bg-slate-900/35 p-2">
+      <div className="mb-2 text-center text-[9px] font-bold uppercase tracking-[0.18em] text-slate-600">Advertisement</div>
       <ins
-        className="adsbygoogle w-full h-full"
+        className="adsbygoogle"
         style={{ display: "block" }}
-        data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" 
+        data-ad-client={client}
         data-ad-slot={dataAdSlot}
         data-ad-format={dataAdFormat}
-        // 2. Shut off Google's aggressive mobile expansion for horizontal ads
-        data-full-width-responsive={dataAdFormat === "horizontal" ? "false" : "true"}
+        data-full-width-responsive="true"
       />
-    </div>
+    </aside>
   );
 }

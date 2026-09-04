@@ -1,40 +1,48 @@
-import { Metadata } from 'next';
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | Smart Solar Load Calculator',
-  description: 'Privacy Policy and Google AdSense cookie disclosures for VoltPulse Green Energy.',
+  title: "Privacy Policy",
+  description: "Privacy information for Green Engineering Tools Solar Calculator.",
+  alternates: { canonical: "https://solarcalculator.greenengineeringtools.com/privacy" },
 };
 
 export default function PrivacyPage() {
   return (
-    <main className="min-h-screen bg-slate-950 p-6 sm:p-12">
-      {/* Your original brilliant Tailwind wrapper, updated with link styles */}
-      <div className="max-w-3xl mx-auto text-slate-300 space-y-5 [&>h1]:text-3xl [&>h1]:font-black [&>h1]:text-sky-400 [&>h1]:mb-8 [&>h3]:text-xl [&>h3]:font-bold [&>h3]:text-white [&>h3]:mt-10 [&>h3]:mb-3 [&>ul]:list-disc [&>ul]:pl-6 [&>ul]:space-y-2 [&>p]:leading-relaxed [&>p>a]:text-sky-400 [&>p>a]:hover:underline [&>ul>li>a]:text-sky-400 [&>ul>li>a]:hover:underline">
-        
-        <h1>Privacy Policy</h1>
-        <p className="text-sky-400 font-medium pb-4 border-b border-slate-800">Effective Date: August 26, 2026</p>
-
-        <p>At VoltPulse Green Energy, accessible from our Smart Solar Load Calculator, one of our main priorities is the privacy of our visitors. This Privacy Policy document outlines the types of information that is collected and recorded by VoltPulse and how we use it.</p>
-        
-        <h3>1. Information We Collect</h3>
-        <p>Our calculator operates primarily in your browser. We do not require you to create an account or provide personally identifiable information (such as your name, email address, or phone number) to use the core engineering tool.</p>
-        
-        <h3>2. Google AdSense and Advertising Cookies</h3>
-        <p>We use Google AdSense to display advertisements, which helps keep this engineering tool free for all users. AdSense relies on cookies to operate properly:</p>
-        <ul>
-          <li>Third-party vendors, including Google, use cookies to serve ads based on a user's prior visits to this website or other websites.</li>
-          <li>Google's use of advertising cookies enables it and its partners to serve targeted ads to our users based on their visits to our site and/or other sites on the Internet.</li>
-          <li>Users may opt out of personalized advertising at any time by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer">Google Ads Settings</a>.</li>
-          <li>Alternatively, you can opt out of a third-party vendor's use of cookies for personalized advertising by visiting <a href="https://aboutads.info" target="_blank" rel="noopener noreferrer">www.aboutads.info</a>.</li>
-        </ul>
-        
-        <h3>3. Log Files</h3>
-        <p>VoltPulse follows a standard procedure of using log files. These files log visitors when they visit websites. The information collected by log files includes internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date and time stamp, referring/exit pages, and possibly the number of clicks. These are not linked to any information that is personally identifiable.</p>
-        
-        <h3>4. Consent</h3>
-        <p>By using our website, you hereby consent to our Privacy Policy and agree to its terms.</p>
-
+    <main className="min-h-screen bg-slate-950 text-slate-200">
+      <div className="mx-auto max-w-4xl px-4 py-14 sm:px-6 sm:py-20">
+        <p className="text-xs font-black uppercase tracking-[0.18em] text-sky-400">Last updated: September 4, 2026</p>
+        <h1 className="mt-4 text-4xl font-black text-white">Privacy Policy</h1>
+        <div className="mt-8 space-y-7 text-sm leading-7 text-slate-400">
+          <Section title="Calculator data">
+            The solar calculator does not require an account. Calculator inputs are saved in your browser's local storage so your unfinished workspace can survive a refresh. The current calculator does not send those saved load selections to a user-account database.
+          </Section>
+          <Section title="Catalog and server data">
+            Appliance and panel reference catalogs are loaded from the site's server-side database. These catalog requests do not require you to provide a name, email address or account.
+          </Section>
+          <Section title="Voice input">
+            Voice input uses the browser's Web Speech Recognition capability when available and only after you activate it. Speech-recognition processing can depend on your browser/device provider and may involve that provider's services. Do not use voice input if you do not want to use the browser's speech-recognition feature.
+          </Section>
+          <Section title="Advertising and cookies">
+            The site may use Google AdSense after advertising is enabled. Google and its partners may use cookies, local storage or similar technologies to provide, measure and personalize advertising where permitted. Where required for users in the EEA, the UK and Switzerland, the site will use a Google-certified consent management platform before serving personalized advertising.
+          </Section>
+          <Section title="Analytics and logs">
+            Hosting providers and security systems may process standard technical logs such as IP address, browser/device information, request time and requested page for security, reliability and diagnostics. If analytics are enabled, this policy should be updated to identify the analytics service and consent settings used.
+          </Section>
+          <Section title="Your choices">
+            You can clear the calculator's locally saved workspace by using the reset control or clearing site data in your browser. Browser settings can also control cookies, local storage and microphone permissions.
+          </Section>
+          <Section title="Changes">
+            This policy may be updated when site features, advertising, analytics or legal requirements change. Material changes should be reflected by updating the date shown on this page.
+          </Section>
+          <Section title="Contact">
+            Use the Contact page on this site for privacy questions or requests.
+          </Section>
+        </div>
       </div>
     </main>
   );
+}
+
+function Section({ title, children }: { title: string; children: React.ReactNode }) {
+  return <section><h2 className="text-xl font-black text-white">{title}</h2><p className="mt-2">{children}</p></section>;
 }
