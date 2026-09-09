@@ -2,6 +2,7 @@
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
+import SolarStorageBridge from "./SolarStorageBridge";
 import {
   ArrowRight,
   BatteryCharging,
@@ -1056,6 +1057,8 @@ export default function SolarLoadBuilder({
           </div>
         </section>
       )}
+
+      <SolarStorageBridge handoff={{ version: 1, loads: engineLoads, inverterEfficiencyPercent, batteryVoltage, simultaneousStarts: simultaneousMotorStarts, unknownMotorSurgeMultiplier }} />
 
       <style jsx global>{`
         .solar-input {

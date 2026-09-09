@@ -13,6 +13,8 @@ export default function Footer() {
           </p>
         </div>
         <div className="grid grid-cols-2 gap-x-6 gap-y-3 text-sm font-bold text-slate-400 sm:grid-cols-3 md:justify-self-end">
+          <Link href="/battery-runtime-calculator" className="hover:text-sky-400">Battery runtime</Link>
+          <Link href="/solar-battery-charging-time-calculator" className="hover:text-sky-400">Solar recharge</Link>
           <Link href="/methodology" className="hover:text-sky-400">Methodology</Link>
           <Link href="/disclaimer" className="hover:text-sky-400">Disclaimer</Link>
           <Link href="/about" className="hover:text-sky-400">About</Link>

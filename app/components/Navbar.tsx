@@ -7,6 +7,8 @@ import Logo from "./Logo";
 
 const links = [
   ["/", "Calculator"],
+  ["/battery-runtime-calculator", "Battery runtime"],
+  ["/solar-battery-charging-time-calculator", "Solar recharge"],
   ["/methodology", "Methodology"],
   ["/system-size/5kw", "5 kW Guide"],
   ["/system-size/10kw", "10 kW Guide"],
@@ -32,7 +34,7 @@ export default function Navbar() {
           <Logo />
         </Link>
 
-        <div className="hidden items-center gap-6 text-sm font-bold text-slate-300 lg:flex">
+        <div className="hidden items-center gap-4 text-sm font-bold text-slate-300 xl:flex">
           {links.map(([href, label]) => (
             <Link key={href} href={href} className="hover:text-sky-400">{label}</Link>
           ))}
@@ -42,7 +44,7 @@ export default function Navbar() {
         <button
           type="button"
           onClick={() => setOpen((value) => !value)}
-          className="flex h-11 w-11 items-center justify-center rounded-xl border border-slate-700 bg-slate-900 text-slate-200 lg:hidden"
+          className="flex h-11 w-11 items-center justify-center rounded-xl border border-slate-700 bg-slate-900 text-slate-200 xl:hidden"
           aria-label={open ? "Close navigation menu" : "Open navigation menu"}
           aria-expanded={open}
         >
@@ -51,7 +53,7 @@ export default function Navbar() {
       </div>
 
       {open && (
-        <div className="border-t border-slate-800 bg-slate-950 px-4 py-4 lg:hidden">
+        <div className="border-t border-slate-800 bg-slate-950 px-4 py-4 xl:hidden">
           <div className="mx-auto grid max-w-6xl gap-2">
             {links.map(([href, label]) => (
               <Link key={href} href={href} onClick={() => setOpen(false)} className="min-h-11 rounded-xl px-4 py-3 text-sm font-bold text-slate-200 hover:bg-slate-900 hover:text-sky-400">{label}</Link>
