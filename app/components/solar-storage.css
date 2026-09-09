@@ -1,4 +1,6 @@
-.storage-page{max-width:1280px;margin:0 auto;padding:2rem 1rem 4rem;color:#cbd5e1;font-size:1rem;line-height:1.6}
+/* Match the original calculator's full-width dark surface, even when the OS uses light mode. */
+.storage-page-shell{min-height:100vh;background:var(--color-slate-950,#020617);color-scheme:dark}
+.storage-page{max-width:1280px;margin:0 auto;padding:2rem 1rem 4rem;color:var(--color-slate-300,#cbd5e1);font-size:1rem;line-height:1.6}
 .storage-page *{box-sizing:border-box}
 .storage-page-header{max-width:860px;margin-bottom:1.5rem}
 .storage-page-header h1{font-size:clamp(1.8rem,3.5vw,2.7rem);font-weight:800;line-height:1.18;letter-spacing:-.025em;color:#f8fafc;margin:.7rem 0}
@@ -13,14 +15,14 @@
 .storage-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1.25rem;align-items:start}
 .storage-editor,.storage-results{min-width:0;display:grid;gap:1.25rem}
 .storage-results{scroll-margin-top:6rem}.storage-mobile-summary{display:none}
-.storage-panel{min-width:0;border:1px solid #263449;border-radius:1.1rem;background:#0f172a;padding:1.35rem}
+.storage-panel{min-width:0;border:1px solid var(--color-slate-800,#1e293b);border-radius:1.1rem;background:var(--color-slate-900,#0f172a);padding:1.35rem}
 .storage-panel h2,.storage-details summary{font-size:1.15rem;font-weight:750;color:#f1f5f9;line-height:1.35;margin:0 0 1rem}
 .storage-panel p{margin:.75rem 0}
 .storage-panel p:last-child{margin-bottom:0}
 .storage-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
 .storage-field{display:block;min-width:0;font-size:.875rem;font-weight:600;line-height:1.45}
 .storage-field>span{display:block;margin-bottom:.4rem}
-.storage-field input,.storage-field select{appearance:auto;display:block;width:100%;min-width:0;min-height:46px;padding:.65rem .7rem;border:1px solid #475569;border-radius:.65rem;background:#020617;color:#f8fafc;font:inherit;font-size:1rem;outline:none}
+.storage-field input,.storage-field select{appearance:auto;display:block;width:100%;min-width:0;min-height:46px;padding:.65rem .7rem;border:1px solid var(--color-slate-600,#475569);border-radius:.65rem;background:var(--color-slate-950,#020617);color:var(--color-slate-50,#f8fafc);font:inherit;font-size:1rem;outline:none}
 .storage-field input:focus,.storage-field select:focus{outline:2px solid #38bdf8;outline-offset:1px}
 .storage-field small,.storage-help{display:block;font-size:.875rem;font-weight:400;line-height:1.65;color:#94a3b8}
 .storage-field small{margin-top:.4rem}
@@ -40,7 +42,7 @@
 .storage-details summary{cursor:pointer;margin:0;padding:.2rem 0;min-height:30px}
 .storage-details[open] summary{margin-bottom:1rem}
 .storage-reset{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.875rem;color:#94a3b8}
-.storage-main-result{border-color:#075985;background:linear-gradient(145deg,#082f4950,#0f172a 80%)}
+.storage-main-result{border-color:var(--color-sky-800,#075985);background-color:var(--color-slate-900,#0f172a);background-image:linear-gradient(145deg,#082f4950,transparent 80%)}
 .storage-main-result .storage-eyebrow{font-size:.875rem;font-weight:650;color:#7dd3fc;margin:0 0 .75rem}
 .storage-main-result h2{font-size:clamp(1.65rem,2.6vw,2.5rem);line-height:1.2;margin:0 0 .75rem;color:#f8fafc;overflow-wrap:anywhere}
 .storage-metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.85rem;margin-top:1.4rem}
@@ -67,6 +69,7 @@
 @media(max-width:1000px){.storage-layout{grid-template-columns:minmax(0,1fr)}.storage-results{grid-row:2}.storage-page{max-width:760px}.storage-mobile-summary{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin:0 0 1.25rem;padding:1rem;border:1px solid #075985;border-radius:.8rem;background:#082f493b;font-size:.875rem}.storage-mobile-summary a{color:#7dd3fc;white-space:nowrap;text-decoration:underline;min-height:44px;display:flex;align-items:center}}
 @media(max-width:480px){.storage-panel{padding:1rem}.storage-fields{grid-template-columns:minmax(0,1fr)}.storage-metrics{gap:.6rem}.storage-metric{padding:.65rem}.storage-metric strong{font-size:1.15rem}.storage-breakdown>div{flex-direction:column;gap:.25rem}.storage-breakdown dd{text-align:left}.storage-load{padding:.8rem}.storage-table-wrap table{min-width:350px}}
 @media print{
+  .storage-page-shell{min-height:0;color-scheme:light}
   body:has(.storage-page),body:has(.storage-page) *{background:transparent!important;color:#111827!important;box-shadow:none!important;text-shadow:none!important}
   body:has(.storage-page) nav,body:has(.storage-page) footer,.storage-edit,.storage-seo,.storage-breadcrumb{display:none!important}
   .storage-page{max-width:none;padding:0;font-size:11pt}.storage-page-header h1{font-size:22pt}.storage-layout{display:block}.storage-results{display:block}.storage-panel{border:1px solid #94a3b8;margin:0 0 12pt;padding:12pt;border-radius:0;break-inside:avoid}.storage-main-result h2{font-size:20pt}

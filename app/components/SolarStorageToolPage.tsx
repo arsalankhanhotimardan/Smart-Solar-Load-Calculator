@@ -17,7 +17,7 @@ export default function SolarStorageToolPage({ mode }: { mode: StorageMode }) {
     operatingSystem: "Web Browser", isAccessibleForFree: true,
     offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
   };
-  return <main className="storage-page">
+  return <div className="storage-page-shell"><main className="storage-page">
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
     <header className="storage-page-header">
       <Link href="/" className="storage-breadcrumb">Solar load calculator / Battery tools</Link>
@@ -36,7 +36,7 @@ export default function SolarStorageToolPage({ mode }: { mode: StorageMode }) {
       </ul>
       <p><Link href="/methodology">Existing solar sizing methodology</Link> · <Link href="/disclaimer">Engineering limitations</Link> · <Link href="/about">About the site</Link> · <Link href="/contact">Report a calculation issue</Link></p>
     </article>
-  </main>;
+  </main></div>;
 }
 
 function RuntimeExplanation() {
