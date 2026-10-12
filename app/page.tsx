@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import SolarLoadBuilder from "./components/SolarLoadBuilder";
+import SolarHero from "./components/SolarHero";
+import QuickStart from "./components/QuickStart";
 import {
   getCommercialAppliances,
   getDomesticAppliances,
@@ -104,48 +106,10 @@ export default async function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
 
-      <section className="border-b border-slate-800/70 bg-[radial-gradient(circle_at_top,rgba(14,165,233,.12),transparent_42%)]">
-        <div className="mx-auto max-w-6xl px-4 py-14 text-center sm:px-6 sm:py-20">
-          <div className="inline-flex rounded-full border border-sky-500/25 bg-sky-500/10 px-4 py-1.5 text-xs font-black uppercase tracking-[0.16em] text-sky-300">
-            Free • no signup • worldwide planning tool
-          </div>
-          <h1 className="mx-auto mt-6 max-w-5xl text-4xl font-black tracking-tight text-white sm:text-5xl lg:text-6xl">
-            Solar Load Calculator for Panels, Inverter & Battery Sizing
-          </h1>
-          <p className="mx-auto mt-5 max-w-3xl text-base leading-7 text-slate-400 sm:text-lg">
-            Build your home or commercial load, estimate daily energy, account for starting surge, and size a practical PV array, inverter, battery bank and roof area using transparent assumptions you can change.
-          </p>
-          <div className="mt-7 flex flex-wrap justify-center gap-2 text-xs font-bold text-slate-300">
-            {[
-              "Running load",
-              "Daily kWh",
-              "Starting surge",
-              "PV kWp",
-              "Panel count",
-              "Inverter kW/kVA",
-              "Battery kWh",
-              "Roof area",
-            ].map((item) => (
-              <span key={item} className="rounded-full border border-slate-700 bg-slate-900/70 px-3 py-1.5">
-                {item}
-              </span>
-            ))}
-          </div>
-          <p className="mx-auto mt-6 max-w-2xl text-sm leading-6 text-slate-400">
-            Don&apos;t know your appliances? Start from your electricity bill:{" "}
-            <Link href="/units-to-solar-calculator" className="font-black text-sky-400 underline underline-offset-4">
-              Units to solar calculator
-            </Link>{" "}
-            or{" "}
-            <Link href="/solar-calculator" className="font-black text-sky-400 underline underline-offset-4">
-              pick your city
-            </Link>
-            .
-          </p>
-        </div>
-      </section>
+      <SolarHero />
+      <QuickStart />
 
-      <section className="mx-auto max-w-7xl px-3 py-8 sm:px-6 sm:py-12">
+      <section id="calculator" className="mx-auto max-w-7xl px-3 py-8 sm:px-6 sm:py-12">
         <SolarLoadBuilder
           initialDomestic={domesticCatalog as any[]}
           initialCommercial={commercialCatalog as any[]}

@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
+import { Check, ChevronRight } from "lucide-react";
 import { SITE, jsonLd } from "../lib/solar-cities";
 
 type Faq = { q: string; a: string };
@@ -54,21 +55,27 @@ export default function SolarPageShell({ title, eyebrow, intro, path, crumbs, to
       {schemas.map((s, i) => (
         <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(s) }} />
       ))}
-      <section className="border-b border-slate-800 bg-[radial-gradient(circle_at_top,rgba(14,165,233,.12),transparent_40%)]">
-        <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
-          <nav aria-label="Breadcrumb" className="mb-5 flex flex-wrap items-center gap-2 text-xs font-bold text-slate-500">
+      <section className="hero-solar hero-grid border-b border-slate-800">
+        <div className="mx-auto max-w-6xl px-4 pb-10 pt-7 sm:px-6 sm:pb-14 sm:pt-10">
+          <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-1 text-xs font-bold text-slate-500">
             <Link href="/" className="hover:text-sky-400">Solar calculator</Link>
             {crumbs.map((c) => (
               <span key={c.href} className="contents">
-                <span>/</span>
+                <ChevronRight className="h-3.5 w-3.5 text-slate-700" aria-hidden="true" />
                 <Link href={c.href} className="hover:text-sky-400">{c.label}</Link>
               </span>
             ))}
           </nav>
-          <p className="text-xs font-black uppercase tracking-[0.18em] text-sky-400">{eyebrow}</p>
-          <h1 className="mt-3 max-w-4xl text-3xl font-black tracking-tight text-white sm:text-5xl">{title}</h1>
-          <p className="mt-5 max-w-3xl text-base leading-7 text-slate-400 sm:text-lg">{intro}</p>
-          <p className="mt-3 text-xs font-bold text-slate-500">Free · No signup · Runs in your browser</p>
+          <p className="mt-6 inline-flex rounded-full border border-amber-300/30 bg-amber-300/10 px-3 py-1 text-[11px] font-black uppercase tracking-[0.16em] text-amber-200">{eyebrow}</p>
+          <h1 className="mt-4 max-w-4xl text-3xl font-black tracking-tight text-white sm:text-5xl sm:leading-[1.05]">{title}</h1>
+          <p className="mt-4 max-w-3xl text-base leading-7 text-slate-300 sm:text-lg sm:leading-8">{intro}</p>
+          <ul className="mt-5 flex flex-wrap gap-x-4 gap-y-2 text-xs font-bold text-slate-400">
+            {["Free", "No signup", "Runs in your browser", "Assumptions you can edit"].map((b) => (
+              <li key={b} className="inline-flex items-center gap-1.5">
+                <Check className="h-3.5 w-3.5 text-amber-300" strokeWidth={3} aria-hidden="true" /> {b}
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
