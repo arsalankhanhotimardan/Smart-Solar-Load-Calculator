@@ -13,6 +13,9 @@ export default function Footer() {
           </p>
         </div>
         <div className="grid grid-cols-2 gap-x-6 gap-y-3 text-sm font-bold text-slate-400 sm:grid-cols-3 md:justify-self-end">
+          <Link href="/units-to-solar-calculator" className="hover:text-sky-400">Units to solar</Link>
+          <Link href="/solar-calculator" className="hover:text-sky-400">Solar by city</Link>
+          <Link href="/system-size/10kw" className="hover:text-sky-400">10 kW guide</Link>
           <Link href="/battery-runtime-calculator" className="hover:text-sky-400">Battery runtime</Link>
           <Link href="/solar-battery-charging-time-calculator" className="hover:text-sky-400">Solar recharge</Link>
           <Link href="/methodology" className="hover:text-sky-400">Methodology</Link>

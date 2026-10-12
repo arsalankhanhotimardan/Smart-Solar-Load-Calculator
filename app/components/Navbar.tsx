@@ -7,11 +7,12 @@ import Logo from "./Logo";
 
 const links = [
   ["/", "Calculator"],
+  ["/units-to-solar-calculator", "Units to solar"],
   ["/battery-runtime-calculator", "Battery runtime"],
   ["/solar-battery-charging-time-calculator", "Solar recharge"],
+  ["/solar-calculator", "Cities"],
   ["/methodology", "Methodology"],
   ["/system-size/5kw", "5 kW Guide"],
-  ["/system-size/10kw", "10 kW Guide"],
   ["/about", "About"],
 ] as const;
 
