@@ -10,11 +10,29 @@ import {
 export const revalidate = 3600;
 
 const SYSTEMS = {
+  "1kw": {
+    kw: 1,
+    title: "1 kW",
+    intent: "lighting, fans, a television and device charging, or a very small shop",
+    note: "A 1 kW array suits small daytime loads such as lights, fans, a television and chargers. It is not a realistic size for an air conditioner, water pump or kitchen appliances, so check the running and starting watts of each device before relying on it.",
+  },
+  "2kw": {
+    kw: 2,
+    title: "2 kW",
+    intent: "small homes with modest, mostly daytime use",
+    note: "A 2 kW array can cover a refrigerator, lighting, fans and electronics in a small home. A single air conditioner or pump can use most of this capacity on its own, so the real answer depends on what runs at the same time.",
+  },
   "3kw": {
     kw: 3,
     title: "3 kW",
     intent: "small homes, apartments and essential daytime loads",
     note: "A 3 kW array is typically considered for efficient homes with modest simultaneous demand. High-power heating, large pumps and multiple air conditioners can exceed the inverter/load envelope quickly.",
+  },
+  "4kw": {
+    kw: 4,
+    title: "4 kW",
+    intent: "medium homes with one air conditioner and normal household loads",
+    note: "A 4 kW array sits between small and mid-size residential systems. It can support a typical household with one air conditioner during sunny hours, provided other heavy loads are not running at the same moment.",
   },
   "5kw": {
     kw: 5,
@@ -22,17 +40,35 @@ const SYSTEMS = {
     intent: "medium homes and mixed household loads",
     note: "A 5 kW class system is a common residential planning size, but whether it can support air conditioning, pumps and kitchen loads depends on simultaneous running watts, starting surge and daily energy rather than the 5 kW label alone.",
   },
+  "6kw": {
+    kw: 6,
+    title: "6 kW",
+    intent: "larger homes with two air conditioners or a pump plus normal loads",
+    note: "A 6 kW array gives more headroom than a 5 kW system for homes where cooling, a water pump and kitchen loads overlap. Inverter size and phase become more important at this scale.",
+  },
   "7-5kw": {
     kw: 7.5,
     title: "7.5 kW",
     intent: "larger homes and higher daytime consumption",
     note: "A 7.5 kW class system provides more PV headroom than typical small residential systems and can suit larger homes where daytime cooling, pumping and appliance loads overlap.",
   },
+  "8kw": {
+    kw: 8,
+    title: "8 kW",
+    intent: "large homes, offices and small businesses with high daytime use",
+    note: "An 8 kW array suits properties with several air conditioners or substantial equipment running by day. Check whether a single-phase or three-phase inverter is required and what your distribution company allows.",
+  },
   "10kw": {
     kw: 10,
     title: "10 kW",
     intent: "large homes, offices and light commercial loads",
     note: "A 10 kW system can serve substantial daily energy demand, but inverter phase, motor starting current, local export limits and roof/string design become increasingly important.",
+  },
+  "12kw": {
+    kw: 12,
+    title: "12 kW",
+    intent: "large residences, clinics, shops and small commercial buildings",
+    note: "A 12 kW array is a substantial installation. Three-phase balance, protective devices, inverter topology and utility approval deserve as much attention as the number of panels.",
   },
   "15kw": {
     kw: 15,

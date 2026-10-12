@@ -131,6 +131,17 @@ export default async function Home() {
               </span>
             ))}
           </div>
+          <p className="mx-auto mt-6 max-w-2xl text-sm leading-6 text-slate-400">
+            Don&apos;t know your appliances? Start from your electricity bill:{" "}
+            <Link href="/units-to-solar-calculator" className="font-black text-sky-400 underline underline-offset-4">
+              Units to solar calculator
+            </Link>{" "}
+            or{" "}
+            <Link href="/solar-calculator" className="font-black text-sky-400 underline underline-offset-4">
+              pick your city
+            </Link>
+            .
+          </p>
         </div>
       </section>
 
